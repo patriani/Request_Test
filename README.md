@@ -1,2 +1,5 @@
 # Request_Test
-A python program for verifying if web sites is on air 
+A python program to verify if web sites is on air.
+
+In this project I use the Requests ("[...]an elegant and simple HTTP library for Python") for get the HTTP return code and check the list of URLs is on air. 
+
