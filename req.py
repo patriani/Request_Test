@@ -22,20 +22,17 @@ def decod(code): # Traduz o código de retorno http em uma mensagem escrita ("st
         print('código de conexão não encontrado')
 
 
-def config():
-
-    print("\nConfigurações:\n")
-    opArquivo = input("1: Adicionar url\n2: Remover um item\n3: Remover todos os itens\n_")
-    sys.stdout.flush() # limpa buffer
-
-    if opArquivo == 1:
+def config(opArquivo):
+           
+    if opArquivo == "1":
         arquivo = open('C:\\Users\\patri\\Desktop\\Geral\\Projetos_Web\\Req\\listaURL.txt', 'a') # abre arquivo com append
+        print ("dentro do if 1")
         url = input('URL: ')
         sys.stdout.flush()
         arquivo.write(url)
         arquivo.close() # fecha arquivo
     
-    elif opArquivo == 2:
+    elif opArquivo == "2":
         excluir = input('insira a url a ser excluida: ')
         sys.stdout.flush()
         arquivo = open('C:\\Users\\patri\\Desktop\\Geral\\Projetos_Web\\Req\\listaURL.txt', 'r') # abrindo arquivo para leitura
@@ -68,14 +65,20 @@ def ini():
         print("\n")
 
 def main():
+    confirma = ''
+    while(confirma != "sair"):
+        confirma = input(' Iniciar Aplicação ? [s/n/sair]') # Captura interação com usuário  
+        sys.stdout.flush()
 
-    confirma = input(' Iniciar Aplicação ? [s/n]') # Captura interação com usuário  
-    sys.stdout.flush()
-
-    if confirma == 's':
-        ini()
-    else: 
-        config()
+        if confirma == 's':
+            ini()
+        elif confirma == 'n': 
+            print("\nConfigurações:\n")
+            opArquivo = input("1: Adicionar url\n2: Remover um item\n3: Remover todos os itens\n_")
+            sys.stdout.flush() # limpa buffer
+            config(opArquivo)
+        else:
+            print("\nFechando Programa\n")
 
 if __name__ == "__main__":
     main()
