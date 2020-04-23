@@ -1,5 +1,6 @@
 import requests
 import sys # biblioteca para limpar buffer
+import os
 
 
 def req(url):
@@ -29,7 +30,7 @@ def config(opArquivo):
         print ("dentro do if 1")
         url = input('URL: ')
         sys.stdout.flush()
-        arquivo.write(url)
+        arquivo.write(url+"\n")
         arquivo.close() # fecha arquivo
     
     elif opArquivo == "2":
@@ -66,19 +67,30 @@ def ini():
 
 def main():
     confirma = ''
+    os.system('cls' if os.name == 'nt' else 'clear')
     while(confirma != "sair"):
-        confirma = input(' Iniciar Aplicação ? [s/n/sair]') # Captura interação com usuário  
+        confirma = input('\n\n Iniciar Aplicação ? [s/config/sair]\n\n') # Captura interação com usuário  
         sys.stdout.flush()
 
         if confirma == 's':
+            os.system('cls' if os.name == 'nt' else 'clear')
             ini()
-        elif confirma == 'n': 
-            print("\nConfigurações:\n")
-            opArquivo = input("1: Adicionar url\n2: Remover um item\n3: Remover todos os itens\n_")
-            sys.stdout.flush() # limpa buffer
-            config(opArquivo)
+        elif confirma == 'config':
+
+            while(confirma != "s"):
+                os.system('cls' if os.name == 'nt' else 'clear') 
+                print("\nConfig:\n")
+                opArquivo = input("1: Adicionar url\n2: Remover um item\n3: Remover todos os itens\n_")
+                sys.stdout.flush() # limpa buffer
+                config(opArquivo)
+                confirma = input("\nSair da configuração ? [s/n]\n")
+
+            confirma = ''
+            os.system('cls' if os.name == 'nt' else 'clear')
         else:
+            os.system('cls' if os.name == 'nt' else 'clear')
             print("\nFechando Programa\n")
+        
 
 if __name__ == "__main__":
     main()
