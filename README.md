@@ -1,5 +1,5 @@
 # Request_Test
-.Requirements: Instal Requests library and python
+.Requirements: Install Requests library and python
 
 .General Objectives: A python program to verify if web sites is on air.
 
